@@ -1,0 +1,114 @@
+/* Header container */
+.admin-header {
+    background: linear-gradient(to right, #2c3e50, #34495e);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    height: 56px;
+}
+
+/* Layout container */
+.admin-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+/* Logo text */
+.logo {
+    margin: 20px 0;
+    font-size: 24px;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+/* Nav links */
+.header-nav {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.header-nav a {
+    color: #f1f1f1;
+    text-decoration: none;
+    margin-left: 24px;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.header-nav a:hover {
+    color: #f39c12;
+}
+
+/* Logout button style */
+.btn-logout {
+    background-color: #e74c3c;
+    padding: 6px 12px;
+    border-radius: 4px;
+    color: white !important;
+    margin-left: 24px;
+    transition: background-color 0.3s;
+}
+
+.btn-logout:hover {
+    background-color: #c0392b;
+}
+
+/* Sidebar container */
+.sidebar {
+    height: 100vh;
+    background-color: #f8f9fa;
+    border-right: 1px solid #dee2e6;
+    position: fixed !important;
+    left: 0;
+    top: 56px;
+    transition: all 0.3s;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    padding-top: 8px !important;
+    z-index: 999;
+}
+
+/* Nav links */
+.sidebar .nav-link {
+    font-weight: 500;
+    color: #333;
+    padding: 10px 20px;
+    border-radius: 4px;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.sidebar .nav-link:hover,
+.sidebar .nav-link.active {
+    background-color: #4d8be9;
+    color: #fff;
+}
+
+/* Icon spacing (nếu có icon trong text) */
+.sidebar .nav-link::before {
+    margin-right: 6px;
+}
+
+.main {
+    margin-left: 16%;
+}
+
+/* Sidebar responsive fix */
+@media (max-width: 768px) {
+    .sidebar {
+        display: none;
+    }
+}
+
+.swal2-toast{
+    font-size: 1.2rem !important;
+}

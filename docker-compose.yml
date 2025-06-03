@@ -1,0 +1,46 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: ./docker/php/Dockerfile
+    container_name: fuelphp-app
+    volumes:
+      - ./docker/php/php.ini:/usr/local/etc/php/php.ini
+      - ./fuelphp:/var/www/html
+    working_dir: /var/www/html
+    ports:
+      - "${APP_PORT:-9000}:9000"
+    depends_on:
+      - db
+
+  web:
+    image: nginx:alpine
+    container_name: fuelphp-web
+    ports:
+      - "80:80"
+    volumes:
+      - ./fuelphp:/var/www/html
+      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - app
+
+  db:
+    image: mysql:8.0
+    container_name: fuelphp-db
+    restart: always
+    env_file:
+      - docker/env/.env
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+
+  adminer:
+    image: adminer
+    container_name: fuelphp_adminer
+    restart: always
+    ports:
+      - "${ADMINER_PORT:-8080}:8080"
+
+volumes:
+  db_data:
